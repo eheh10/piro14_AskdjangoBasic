@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 class Item(models.Model):
@@ -13,3 +14,6 @@ class Item(models.Model):
     
     class Meta:
         ordering = ['id']
+
+class Post(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

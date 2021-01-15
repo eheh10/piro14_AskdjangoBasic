@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Item
 
-@admin.site.register(Item)
+admin.site.register(Item)
 class ItemAdmin(admin.ModelAdmin):
     list_display = ['pk', 'name', 'short_desc', 'price', 'is_publish']
     list_display_links = ['name']
