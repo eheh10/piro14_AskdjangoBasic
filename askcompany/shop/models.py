@@ -10,3 +10,6 @@ class Item(models.Model):
 
     def __str__(self):
         return f'<{self.pk}> {self.name}'
+    
+    class Meta:
+        ordering = ['id']

@@ -9,4 +9,5 @@ register_converter(FourDigitYearConverter, 'yyyy')
 urlpatterns = [
     path('articles/<yyyy:year>', views.year_archive),
     path('excel/', views.response_excel),
+    path('', views.item_list)
 ]
