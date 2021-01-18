@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
+{% load fresh_static %} 
 
 {% block title %}Shop by Ask company{% endblock %}
 
 {% block extra_head %} 
-{% load static %} 
     {{block.super}}
     <link rel="stylesheet" href="{% static 'shop/shop.css' %}">
 {% endblock %}

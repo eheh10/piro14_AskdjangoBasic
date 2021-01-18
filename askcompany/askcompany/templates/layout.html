@@ -1,4 +1,4 @@
-{% load static %}
+{% load static fresh_static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Ask company{% endblock %}</title>
     {% block extra_head %}
-    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% fresh_static 'main.css' %}">
     {% endblock %}
 </head>
 <body>
