@@ -27,38 +27,7 @@
                     {% csrf_token %}
 
                     <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <th>name</th>
-                                <td>
-                                    <input type="text" name="name" value="{{ initial.name }}" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>desc</th>
-                                <td>
-                                    <textarea name="desc" class="form-control">{{ initial.desc }}</textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>price</th>
-                                <td>
-                                    <input type="text" name="price" value="{{ initial.price }}" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>photo</th>
-                                <td>
-                                    <input type="file" name="photo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>is_publish</th>
-                                <td>
-                                    <input type="checkbox" name="is_publish" value="1" {% if initial.is_publish %}checked{% endif %} />
-                                </td>
-                            </tr>
-                        </tbody>
+                        {{form.as_table}}
                     </table>
 
                     <input type="submit" value="저장하기" class="btn btn-primary" />
