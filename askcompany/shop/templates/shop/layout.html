@@ -2,4 +2,12 @@
 
 {% block title %}Shop by Ask company{% endblock %}
 
-{% block extra_head %} {% endblock %}
+{% block extra_head %} 
+{% load static %} 
+    {{block.super}}
+    <link rel="stylesheet" href="{% static 'shop/shop.css' %}">
+{% endblock %}
+
+{% block extra_body %}
+    {{block.super}}
+{% endblock %}
