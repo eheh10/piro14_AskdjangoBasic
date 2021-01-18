@@ -1,5 +1,6 @@
 from django.conf import settings
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render, resolve_url
+from django.contrib.auth import login as auth_login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -12,17 +13,29 @@ def signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            return redirect(settings.LOGIN_URL)
+            auth_login(request, user)
+            return redirect('profile')
     else:
-        form = UserCreationForm()
+        form = SignupForm()
     return render(request, "accounts/signup.html", {
         "form":form,
     })
 '''
-signup = CreateView.as_view(model=User, 
-        form_class=UserCreationForm,
-        success_url='settings.LOGIN_URL', 
-        template_name='accounts/signup.html')
+
+class SignupView(CreateView):
+    model = User
+    form_class = SignupForm
+    template_name = 'accounts/signup.html'
+
+    def get_success_url(self):
+        return resolve_url('profile')
+    
+    def form_valid(self, form):
+        user = form.save()
+        auth_login(self.request, user)
+        return redirect(self.get_success_url())
+
+signup = SignupView.as_view()
 
 @login_required
 def profile(request):
