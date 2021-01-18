@@ -10,7 +10,7 @@
 <ul>
     {% for item in item_list %}
     <li>
-        <a href="/shop/{{item.pk}}">{{item.name}}</a>
+        <a href="{{item.get_absolute_url}}">{{item.name}}</a>
         {{item.price}}
         {{item.desc}}
     </li>
